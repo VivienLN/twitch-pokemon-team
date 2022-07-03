@@ -1,4 +1,6 @@
-Affiche 6 pokemon pour un stream (source navigateur), et la gère via le chat.
+Affiche verticalement une équipe de 6 pokemon pour un stream (source navigateur), et la gère via le chat.
+
+<img src="screen.png"/>
 
 ## Config
 
