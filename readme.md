@@ -15,10 +15,11 @@ Affiche 6 pokemon pour un stream (source navigateur), et la gère via le chat.
 
 Place un pokemon dans l'emplacement de team choisi (de 1 à 6).
 
-* Commande : `!setpoke <emplacement> <nom>`
+* Commande : `!setpoke <emplacement> <nom> <*>`
 * Parametres : 
     * `emplacement`: L'emplacement à modifier, entre 1 et 6
     * `nom` : Nom (en français) du pokémon à y placer. Pas besoin de majuscules ou accents dans ce nom.
+    * `*` : A ajouter pour indiquer que le pokemon est shiny. Ignorer sinon.
 * Exemple : `!setpoke 1 pikachu`
 
 > Note: Pour plus de facilité, Nidoran♀ et Nidoran♂ ont été remplacés, respectivement, par nidoranF et nidoranM.

@@ -32,13 +32,13 @@
                 content: '';
                 position: absolute;
                 z-index: 0;
-                background: #47315d;
+                background: #53386d;
                 border-radius: 50%;
-                left: 20px;
-                right: 20px;
-                bottom: 20px;
-                top: 20px;
-                opacity: .9;
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
+                top: 10px;
+                opacity: .8;
             }
             .slot img {
                 display: block;
@@ -48,11 +48,11 @@
                 height: 100%;
                 object-fit: contain;
                 image-rendering: pixelated;
-                filter: drop-shadow(0 1px 6px rgba(0, 0, 0, .5));
-                animation: .4s ease-out 1 pokemon-show;
+                filter: drop-shadow(0 1px 6px rgba(0, 0, 0, .6));
+                animation: .6s ease-out 1 pokemon-show;
             }
             @keyframes pokemon-show {
-                from {opacity: 0; transform: scale(.1, .1);}
+                from {opacity: 0; transform: scale(.8, .8);}
                 to {opacity: 1; transform: scale(1, 1);}
             }
         </style>
@@ -81,7 +81,7 @@
                     // !setpoke <slot> <name>
                     if(command === "setpoke") {
                         console.log(`${user} called !setpoke ${message}`);
-                        setPokemon(params[0], params[1]);
+                        setPokemon(params[0], params[1], params[2] === '*');
                     }
 
                     // !rmpoke <slot>
@@ -111,13 +111,13 @@
                 });
             }
 
-            function setPokemon(slot, name) {
+            function setPokemon(slot, name, isShiny = false) {
                 if(slot > 6) {
                     console.error('invalid slot!');
                     return;
                 }
 
-                let sprite = getSprite(name);
+                let sprite = getSprite(name, isShiny);
                 if(sprite === null) {
                     return;
                 }
@@ -135,13 +135,14 @@
                 refresh();
             }
 
-            function getSprite(nameFr) {
+            function getSprite(nameFr, isShiny) {
                 let id = getPokemonIdFromName(nameFr);
                 if(id === null) {
                     console.error('pokemon not found!');
                     return null;
                 }
-                return SPRITES_ROOT + id + '.gif';
+                let root = isShiny ? SPRITES_ROOT_SHINY : SPRITES_ROOT;
+                return root + id + '.gif';
             }
 
             function getPokemonIdFromName(search) {
